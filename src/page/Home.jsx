@@ -95,7 +95,7 @@ export default function Home() {
     return (
         <div className="font-sans text-slate-900 bg-white overflow-hidden">
             {/* NAVBAR */}
-            <nav className="bg-black text-white md:px-6 px-4 md:py-4 py-3 fixed w-full top-0 z-50 border-b border-white/10">
+            <nav className="bg-black text-white md:px-6 px-4 md:py-3.5 py-3.5 fixed w-full top-0 z-50 border-b border-white/10">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
 
 
@@ -120,8 +120,20 @@ export default function Home() {
                         <a href="#contact" className="hover:text-[#ccff00] transition-colors">Contact</a>
                     </div>
 
-                    <div className="hidden md:flex items-center gap-6">
-                        <span className="text-md">PH: +880 9611-342936</span>
+                    <div className="hidden md:flex items-center gap-8">
+
+                        <div className="inline-flex items-center gap-2 bg-black text-white px-2.5 py-1.5 rounded-full border border-white/15 shadow-lg hover:shadow-[#ccff00]/20 hover:border-[#ccff00]/40 transition-all duration-300 group">
+
+                            {/* Icon */}
+                            <div className="w-7 h-7 rounded-full bg-[#ccff00] flex items-center justify-center">
+                                <Phone className="w-4 h-4 text-black" />
+                            </div>
+
+                            <span className="text-sm md:text-base font-semibold group-hover:text-[#ccff00] transition-colors duration-300">
+                                +880 9611-342936
+                            </span>
+                        </div>
+
                         <motion.button
                             animate={{
                                 scale: [1, 1.05, 1],
@@ -136,7 +148,7 @@ export default function Home() {
                                 repeat: Infinity,
                                 ease: "easeInOut"
                             }}
-                            className="bg-white text-black text-bold px-5 py-2 rounded-full font-semibold hover:bg-[#ccff00] hover:text-black transition-colors"
+                            className="bg-white text-black text-bold px-5 py-1.5 rounded-full font-semibold hover:bg-[#ccff00] hover:text-black transition-colors"
                         >
                             Order Now
                         </motion.button>
@@ -313,7 +325,7 @@ export default function Home() {
                         <motion.div
                             animate={{ y: [0, -10, 0] }}
                             transition={{ duration: 3, repeat: Infinity }}
-                            className="absolute bottom-10 left-8 bg-[#ccff00] text-black px-5 py-3 rounded-full font-bold shadow-2xl z-30"
+                            className="absolute bottom-10 left-8 bg-[#ccff00] text-black md:px-5 px-3 md:py-3 py-2 rounded-full font-bold shadow-2xl z-30"
                         >
                             Series 8 Ultra
                         </motion.div>
@@ -662,7 +674,7 @@ export default function Home() {
                     {/* Floating Newsletter Card */}
                     <motion.div
                         variants={fadeUp}
-                        className="bg-zinc-950/80 backdrop-blur-md border border-zinc-800 rounded-[2rem] p-3 md:p-8 flex flex-col md:flex-row items-center justify-between md:gap-6 gap-3 shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+                        className="bg-zinc-950/80 backdrop-blur-md border border-zinc-800 rounded-[0.5rem] md:rounded-[3rem] p-3 md:p-8 flex flex-col md:flex-row items-center justify-between md:gap-6 gap-3 shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
                     >
                         <div className="text-center md:text-left">
                             <h3 className="text-2xl font-extrabold mb-1">Stay updated</h3>
@@ -694,8 +706,8 @@ export default function Home() {
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
                             >
-                                <div className="w-8 h-8 bg-[#ccff00] rounded-tl-xl rounded-br-xl"></div>
-                                <span className="text-3xl font-extrabold tracking-tight"> <span className="text-[#fe741d]">Victus</span> Byte</span>
+                                <div className="md:w-8 md:h-8 w-6 h-6 bg-[#ccff00] rounded-tl-xl rounded-br-xl"></div>
+                                <span className="md:text-3xl text-2xl font-extrabold tracking-tight"> <span className="text-[#fe741d]">Victus</span> Byte</span>
                             </a>
 
                             <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400 font-medium">
@@ -748,7 +760,7 @@ export default function Home() {
                     {/* Copyright Divider */}
                     <motion.div
                         variants={fadeUp}
-                        className="mt-12 text-center border-t border-zinc-900 pt-6 text-sm text-zinc-600"
+                        className="md:mt-12 mt-6 -mb-3 md:-mb-0 text-center border-t border-zinc-900 md:pt-6 pt-3 text-sm text-zinc-600"
                     >
                         <p>© 2026 Victus Byte. All Rights Reserved.</p>
                     </motion.div>
