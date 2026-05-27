@@ -95,7 +95,7 @@ export default function Home() {
     return (
         <div className="font-sans text-slate-900 bg-white overflow-hidden">
             {/* NAVBAR */}
-            <nav className="bg-black text-white px-6 py-4 fixed w-full top-0 z-50 border-b border-white/10">
+            <nav className="bg-black text-white md:px-6 px-4 md:py-4 py-3 fixed w-full top-0 z-50 border-b border-white/10">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
 
 
@@ -106,8 +106,8 @@ export default function Home() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
                     >
-                        <div className="w-8 h-8 bg-[#ccff00] rounded-tl-xl rounded-br-xl"></div>
-                        <span className="text-3xl font-extrabold tracking-tight"> <span className="text-[#fe741d]"> Victus</span> Byte</span>
+                        <div className="md:w-8 md:h-8 w-6 h-6 bg-[#ccff00] rounded-tl-xl rounded-br-xl"></div>
+                        <span className="md:text-3xl text-2xl font-extrabold tracking-tight"> <span className="text-[#fe741d]"> Victus</span> Byte</span>
                     </a>
 
 
@@ -143,7 +143,26 @@ export default function Home() {
                     </div>
 
 
-                    <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <motion.button
+                        animate={{
+                            scale: [1, 1.07, 1],
+                            boxShadow: [
+                                "0px 0px 0px rgba(204, 255, 0, 0)",
+                                "0px 0px 20px rgba(204, 255, 0, 0.9)",
+                                "0px 0px 0px rgba(204, 255, 0, 0)"
+                            ]
+                        }}
+                        transition={{
+                            duration: 5,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                        className="bg-white text-sm md:hidden text-black text-bold px-4 py-1.5 rounded-full font-bold hover:bg-[#ccff00] hover:text-black transition-colors"
+                    >
+                        Order Now
+                    </motion.button>
+
+                    <button className="hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                         {isMenuOpen ? <X /> : <Menu />}
                     </button>
                 </div>
@@ -153,164 +172,232 @@ export default function Home() {
             <HeroSection />
 
             {/* HIGHLIGHTS GRID */}
-            <section className="py-24 px-6 bg-white text-center">
-                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-3xl mx-auto mb-16">
+            <section className="md:py-24 pb-12 pt-5 md:px-6 px-2 bg-white text-center">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeUp}
+                    className="max-w-3xl mx-auto md:mb-16 mb-6"
+                >
                     <Activity className="w-12 h-12 mx-auto mb-4 text-black" />
-                    <h2 className="text-sm font-bold tracking-widest uppercase mb-2">Ultra Series 8</h2>
-                    <h3 className="text-4xl md:text-5xl font-bold leading-tight">
-                        Ultra Smartwatch Series 8 <br /> Waterproof Long Battery Life
+
+                    <h2 className="text-sm font-bold tracking-widest uppercase mb-2">
+                        Ultra Series 8
+                    </h2>
+
+                    <h3 className="text-2xl md:text-5xl font-bold leading-tight">
+                        Ultra Smartwatch Series 8 <br />
+                        Waterproof Long Battery Life
                     </h3>
                 </motion.div>
 
                 <motion.div
                     variants={{
                         hidden: { opacity: 0 },
-                        visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+                        visible: {
+                            opacity: 1,
+                            transition: { staggerChildren: 0.2 }
+                        }
                     }}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6"
+                    className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6"
                 >
                     {[
-                        { title: 'Tough And Firm', image: 'https://winsfolio.net/html/promix/demos/assets/img/services-1.jpg' },
-                        { title: 'HD Large Screen', image: 'https://winsfolio.net/html/promix/demos/assets/img/services-2.jpg' },
-                        { title: 'Magnetic Charging', image: 'https://winsfolio.net/html/promix/demos/assets/img/services-3.jpg' },
-                        { title: 'Health Management', image: 'https://winsfolio.net/html/promix/demos/assets/img/services-4.jpg' }
+                        {
+                            title: "Tough And Firm",
+                            image:
+                                "https://winsfolio.net/html/promix/demos/assets/img/services-1.jpg"
+                        },
+                        {
+                            title: "HD Large Screen",
+                            image:
+                                "https://winsfolio.net/html/promix/demos/assets/img/services-2.jpg"
+                        },
+                        {
+                            title: "Magnetic Charging",
+                            image:
+                                "https://winsfolio.net/html/promix/demos/assets/img/services-3.jpg"
+                        },
+                        {
+                            title: "Health Management",
+                            image:
+                                "https://winsfolio.net/html/promix/demos/assets/img/services-4.jpg"
+                        }
                     ].map((feature, idx) => (
                         <motion.div
                             key={idx}
                             variants={fadeUp}
-                            // Lifts the entire card on hover
                             whileHover={{ y: -10 }}
-                            transition={{ duration: 0.3, ease: "easeOut" }}
-                            className="bg-black text-white rounded-xl aspect-square flex flex-col justify-end items-center relative overflow-hidden group cursor-pointer shadow-lg hover:shadow-2xl"
+                            transition={{ duration: 0.3 }}
+                            className="relative overflow-hidden rounded-2xl aspect-square cursor-pointer group shadow-lg"
                         >
-                            {/* Background Image with Zoom Animation on Hover */}
+                            {/* Background Image */}
                             <motion.div
-                                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                                className="absolute inset-0 bg-cover bg-center"
                                 style={{ backgroundImage: `url(${feature.image})` }}
-                                // Zooms the image slightly when hovering over the parent
                                 whileHover={{ scale: 1.1 }}
-                                transition={{ duration: 0.6, ease: "easeOut" }}
+                                transition={{ duration: 0.5 }}
                             />
 
-                            {/* Dark Gradient Overlay (Ensures white text is always readable over the images) */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                            {/* Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10" />
 
-                            {/* Text Content */}
-                            <h4 className="relative z-10 font-bold text-lg mb-8 group-hover:text-[#ccff00] transition-colors duration-300">
-                                {feature.title}
-                            </h4>
+                            {/* Content */}
+                            <div className="relative z-20 h-full flex items-end p-4 md:p-6">
+                                <h4 className="text-white text-sm md:text-xl font-bold transition-colors duration-300 group-hover:text-[#ccff00]">
+                                    {feature.title}
+                                </h4>
+                            </div>
                         </motion.div>
                     ))}
                 </motion.div>
             </section>
 
-
-
-
-            {/* FEATURES SPLIT */}
             {/* FEATURES SPLIT / ABOUT SECTION */}
-            <section className="py-24 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center bg-white">
+            <section className="relative overflow-hidden bg-black text-white md:py-28 py-16">
 
-                {/* Left Side: Overlapping Image Collage */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
-                    className="relative w-full h-[500px] md:h-[650px]"
-                >
-                    {/* Top Right Image */}
-                    <div className="absolute top-0 right-0 w-[65%] h-[45%] overflow-hidden group">
-                        <div
-                            className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                            style={{ backgroundImage: "url('https://winsfolio.net/html/promix/demos/assets/img/about-img-1.jpg')" }}
-                        />
-                    </div>
+                {/* Background Glow */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#ccff00]/10 blur-[140px] rounded-full pointer-events-none"></div>
 
-                    {/* Middle Left Image (Overlaps others with thick white border) */}
-                    <div className="absolute top-[25%] left-0 w-[55%] h-[45%] border-[10px] border-white bg-white z-10 overflow-hidden group shadow-2xl">
-                        <div
-                            className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                            style={{ backgroundImage: "url('https://winsfolio.net/html/promix/demos/assets/img/about-img-2.jpg')" }}
-                        />
-                    </div>
+                <div className="max-w-7xl mx-auto md:px-8 px-4 grid md:grid-cols-2 gap-16 items-center relative z-10">
 
-                    {/* Bottom Right Image */}
-                    <div className="absolute bottom-0 right-[10%] w-[60%] h-[45%] overflow-hidden group">
-                        <div
-                            className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                            style={{ backgroundImage: "url('https://winsfolio.net/html/promix/demos/assets/img/about-img-3.jpg')" }}
-                        />
-                    </div>
-                </motion.div>
+                    {/* LEFT SIDE */}
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={fadeUp}
+                        className="relative w-full h-[420px] md:h-[650px]"
+                    >
 
-                {/* Right Side: Text & Features */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
-                    className="md:pl-8"
-                >
-                    <h2 className="text-sm font-bold text-gray-900 mb-3">Ultra Smartwatch Series 8</h2>
+                        {/* Decorative Border */}
+                        <div className="absolute inset-0 border border-white/10 rounded-[40px]"></div>
 
-                    {/* Main Title (Fixed the 'Smartwacth' typo from the image) */}
-                    <h3 className="text-5xl md:text-6xl font-extrabold text-black leading-[1.15] mb-6">
-                        The Best Ultra 8 <br /> Smartwatch
-                    </h3>
-
-                    {/* Neon Green Underline */}
-                    <div className="w-40 h-1 bg-[#ccff00] mb-12"></div>
-
-                    {/* Features List */}
-                    <div className="space-y-10">
-
-                        {/* Feature 1 */}
-                        <div className="flex gap-6">
-                            <div className="w-16 h-16 rounded-full bg-[#ccff00] flex items-center justify-center shrink-0">
-                                <Phone className="w-7 h-7 text-black" />
-                            </div>
-                            <div>
-                                <h4 className="text-xl font-bold mb-2 text-black">BT v5.1 Calling</h4>
-                                <p className="text-gray-500 text-sm leading-relaxed max-w-sm">
-                                    Capitalize on low hanging fruit to identify a ballpark value added activity.
-                                </p>
-                            </div>
+                        {/* Top Right */}
+                        <div className="absolute top-0 right-0 w-[68%] h-[42%] rounded-[30px] overflow-hidden group shadow-2xl">
+                            <div
+                                className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style={{
+                                    backgroundImage:
+                                        "url('https://winsfolio.net/html/promix/demos/assets/img/about-img-1.jpg')"
+                                }}
+                            />
                         </div>
 
-                        {/* Feature 2 */}
-                        <div className="flex gap-6">
-                            <div className="w-16 h-16 rounded-full bg-[#ccff00] flex items-center justify-center shrink-0">
-                                {/* Fallback to Mic if MonitorSmartphone isn't imported */}
-                                <Mic className="w-7 h-7 text-black" />
-                            </div>
-                            <div>
-                                <h4 className="text-xl font-bold mb-2 text-black">Micro Phone Support</h4>
-                                <p className="text-gray-500 text-sm leading-relaxed max-w-sm">
-                                    Capitalize on low hanging fruit to identify a ballpark value added activity.
-                                </p>
-                            </div>
+                        {/* Middle Left Main */}
+                        <div className="absolute top-[24%] left-0 w-[58%] h-[45%] rounded-[30px] border-[10px] border-black overflow-hidden z-20 group shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
+                            <div
+                                className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style={{
+                                    backgroundImage:
+                                        "url('https://winsfolio.net/html/promix/demos/assets/img/about-img-2.jpg')"
+                                }}
+                            />
                         </div>
 
-                        {/* Feature 3 */}
-                        <div className="flex gap-6">
-                            <div className="w-16 h-16 rounded-full bg-[#ccff00] flex items-center justify-center shrink-0">
-                                {/* Fallback to ShieldCheck if Watch isn't imported */}
-                                <ShieldCheck className="w-7 h-7 text-black" />
-                            </div>
-                            <div>
-                                <h4 className="text-xl font-bold mb-2 text-black">Voice Assistant</h4>
-                                <p className="text-gray-500 text-sm leading-relaxed max-w-sm">
-                                    Capitalize on low hanging fruit to identify a ballpark value added activity.
-                                </p>
-                            </div>
+                        {/* Bottom Right */}
+                        <div className="absolute bottom-0 right-[8%] w-[62%] h-[42%] rounded-[30px] overflow-hidden group shadow-2xl">
+                            <div
+                                className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style={{
+                                    backgroundImage:
+                                        "url('https://winsfolio.net/html/promix/demos/assets/img/about-img-3.jpg')"
+                                }}
+                            />
                         </div>
 
-                    </div>
-                </motion.div>
+                        {/* Floating Badge */}
+                        <motion.div
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ duration: 3, repeat: Infinity }}
+                            className="absolute bottom-10 left-8 bg-[#ccff00] text-black px-5 py-3 rounded-full font-bold shadow-2xl z-30"
+                        >
+                            Series 8 Ultra
+                        </motion.div>
+                    </motion.div>
+
+                    {/* RIGHT SIDE */}
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={fadeUp}
+                        className="relative"
+                    >
+
+                        {/* Small Heading */}
+                        <span className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[#ccff00] md:text-sm text-xs font-semibold tracking-wider uppercase mb-5">
+                            Ultra Smartwatch Series 8
+                        </span>
+
+                        {/* Title */}
+                        <h2 className="text-3xl md:text-7xl font-black leading-[1.05] mb-6">
+                            The Future <br />
+                            On Your Wrist
+                        </h2>
+
+                        {/* Description */}
+                        <p className="text-gray-400 text-lg leading-relaxed max-w-xl mb-12">
+                            Experience premium performance, health tracking, waterproof durability,
+                            and ultra-fast connectivity with the next-generation smartwatch.
+                        </p>
+
+                        {/* Features */}
+                        <div className="space-y-6">
+
+                            {[
+                                {
+                                    icon: <Phone className="w-6 h-6" />,
+                                    title: "BT v5.1 Calling"
+                                },
+                                {
+                                    icon: <Mic className="w-6 h-6" />,
+                                    title: "Microphone Support"
+                                },
+                                {
+                                    icon: <ShieldCheck className="w-6 h-6" />,
+                                    title: "Voice Assistant"
+                                }
+                            ].map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    whileHover={{ x: 10 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="group flex items-center gap-5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-5 transition-all duration-300"
+                                >
+
+                                    {/* Icon */}
+                                    <div className="w-14 h-14 rounded-2xl bg-[#ccff00] text-black flex items-center justify-center shrink-0 shadow-lg">
+                                        {item.icon}
+                                    </div>
+
+                                    {/* Text */}
+                                    <div>
+                                        <h4 className="text-xl font-bold mb-1 group-hover:text-[#ccff00] transition-colors">
+                                            {item.title}
+                                        </h4>
+
+                                        <p className="text-gray-400 text-sm leading-relaxed">
+                                            Premium smartwatch technology with modern connectivity
+                                            and advanced smart features.
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Button */}
+                        <div className="mt-10">
+                            <button className="bg-[#ccff00] hover:bg-white text-black font-bold md:px-8  md:py-4 px-5  py-2.5 rounded-full transition-all duration-300 shadow-[0_10px_40px_rgba(204,255,0,0.4)]">
+                                Explore More
+                            </button>
+                        </div>
+
+                    </motion.div>
+                </div>
             </section>
 
 
@@ -363,7 +450,7 @@ export default function Home() {
 
 
             {/* ENHANCED ORDER FORM SECTION */}
-            <section id="order" className="py-24 px-6 max-w-7xl mx-auto">
+            <section id="order" className="py-24 md:px-6 px-2 max-w-7xl mx-auto">
                 {/* Changed to md:grid-cols-2 to split 50/50 */}
                 <motion.div
                     initial="hidden"
@@ -373,17 +460,17 @@ export default function Home() {
                         hidden: { opacity: 0, y: 50 },
                         visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 } }
                     }}
-                    className="grid md:grid-cols-2 gap-0 bg-black text-white rounded-[1rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-zinc-800"
+                    className="grid md:grid-cols-2 gap-0 bg-black text-white rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-zinc-800"
                 >
 
                     {/* LEFT SIDE: FORM */}
-                    <div className="p-10 md:p-16 flex flex-col justify-center bg-zinc-950 relative">
+                    <div className="p-3 md:p-16 flex flex-col justify-center bg-zinc-950 relative">
                         {/* Animated Topographic pattern background */}
                         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`, backgroundSize: '400px 400px' }}></div>
 
                         <div className="relative z-10">
-                            <motion.div variants={fadeUp}>
-                                <h3 className="text-4xl font-bold mb-2">Order Now</h3>
+                            <motion.div variants={fadeUp} className="text-center md:text-base">
+                                <h3 className="md:text-4xl text-2xl font-bold mb-2 mt-3 md:mt-0">Order Now</h3>
                                 <p className="text-gray-400 mb-8">Secure your Ultra 8 Smartwatch today.</p>
                             </motion.div>
 
@@ -395,13 +482,13 @@ export default function Home() {
                                     { placeholder: "Phone No", type: "tel", icon: <Phone className="text-gray-500 w-5 h-5" /> }
                                 ].map((field, idx) => (
                                     <motion.div key={idx} variants={fadeUp} className="relative group">
-                                        <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none transition-colors group-focus-within:text-[#ccff00]">
+                                        <div className="absolute inset-y-0 left-0 md:pl-6 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-[#ccff00]">
                                             {field.icon}
                                         </div>
                                         <input
                                             type={field.type}
                                             placeholder={field.placeholder}
-                                            className="w-full bg-zinc-900/50 border border-zinc-800 rounded-full pl-14 pr-6 py-4 text-white focus:outline-none focus:border-[#ccff00] focus:bg-black focus:ring-1 focus:ring-[#ccff00] transition-all duration-300"
+                                            className="w-full bg-zinc-900/50 border border-zinc-800 rounded-full md:pl-14 pl-12 pr-6 md:py-4 py-2.5 text-white focus:outline-none focus:border-[#ccff00] focus:bg-black focus:ring-1 focus:ring-[#ccff00] transition-all duration-300"
                                         />
                                     </motion.div>
                                 ))}
@@ -423,7 +510,7 @@ export default function Home() {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     type="button"
-                                    className="w-full bg-[#ccff00] text-black font-bold text-lg rounded-full py-4 flex items-center justify-center gap-3 hover:bg-[#b3e600] transition-colors shadow-[0_0_20px_rgba(204,255,0,0.2)] hover:shadow-[0_0_30px_rgba(204,255,0,0.4)]"
+                                    className="w-full bg-[#ccff00] mb-3 md:mb-0 text-black font-bold text-lg rounded-full md:py-4 py-2.5 flex items-center justify-center gap-3 hover:bg-[#b3e600] transition-colors shadow-[0_0_20px_rgba(204,255,0,0.2)] hover:shadow-[0_0_30px_rgba(204,255,0,0.4)]"
                                 >
                                     Place Order <ShoppingCart className="w-5 h-5" />
                                 </motion.button>
@@ -563,19 +650,19 @@ export default function Home() {
 
 
             {/* COMPACT ANIMATED FOOTER */}
-            <footer className="bg-[#050505] text-white pt-16 pb-6 px-6 border-t border-zinc-900 relative overflow-hidden">
+            <footer className="bg-[#050505] text-white md:pt-16 pt-6  pb-6 md:px-6 border-t border-zinc-900 relative overflow-hidden">
                 {/* Subtle Topographic Background */}
                 <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at center, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
 
                 {/* Background Glow */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#ccff00] opacity-[0.02] blur-[100px] rounded-full pointer-events-none"></div>
 
-                <div className="max-w-7xl px-6 mx-auto relative z-10">
+                <div className="max-w-7xl md:px-6 px-3 mx-auto relative z-10">
 
                     {/* Floating Newsletter Card */}
                     <motion.div
                         variants={fadeUp}
-                        className="bg-zinc-950/80 backdrop-blur-md border border-zinc-800 rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+                        className="bg-zinc-950/80 backdrop-blur-md border border-zinc-800 rounded-[2rem] p-3 md:p-8 flex flex-col md:flex-row items-center justify-between md:gap-6 gap-3 shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
                     >
                         <div className="text-center md:text-left">
                             <h3 className="text-2xl font-extrabold mb-1">Stay updated</h3>
@@ -588,7 +675,7 @@ export default function Home() {
                                 placeholder="Email address..."
                                 className="bg-transparent w-full md:w-64 px-4 text-white focus:outline-none text-sm placeholder:text-zinc-600"
                             />
-                            <button className="bg-[#ccff00] text-black px-6 py-2.5 rounded-full font-bold text-sm hover:bg-[#b3e600] transition-colors transform hover:scale-105">
+                            <button className="bg-[#ccff00] text-black px-6 md:py-2.5 py-2 rounded-full font-bold text-sm hover:bg-[#b3e600] transition-colors transform hover:scale-105">
                                 Subscribe
                             </button>
                         </div>

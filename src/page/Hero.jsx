@@ -10,7 +10,7 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="relative bg-[#090909] text-white pt-32 pb-48 md:pb-64 px-6 min-h-[95vh] flex items-center overflow-hidden"
+      className="relative bg-[#090909] text-white md:pt-32 pt-12 pb-48 md:pb-64 px-6 min-h-[95vh] flex items-center overflow-hidden"
       style={{
         // Creates the exact slanted cut at the bottom (high on left, low on right)
         clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 75%)'
@@ -28,7 +28,7 @@ export default function HeroSection() {
   }}
 ></div>
       
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10 w-full">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 md:gap-12 gap-4 items-center relative z-10 w-full">
         {/* Left Text Content */}
         <motion.div 
           initial="hidden" 
@@ -37,12 +37,12 @@ export default function HeroSection() {
           className="mt-10 md:mt-0"
         >
           {/* Pill Badge */}
-          <div className="inline-block border border-gray-600 rounded-full px-5 py-2 text-xs md:text-sm text-gray-300 mb-8">
+          <div className="inline-block border border-gray-600 rounded-full md:px-5 px-3 py-1.5 md:py-2 text-xs md:text-sm text-gray-300 md:mb-8 mb-5">
             DJI Air 3 is an advanced all-around drone
           </div>
           
           {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] mb-6">
+          <h1 className="text-4xl md:text-7xl font-bold leading-[1.1] md:mb-6 mb-4">
             <span className="relative inline-block pb-2">
               Ultra 8 Smart
               {/* Neon Green Underline */}
@@ -58,8 +58,8 @@ export default function HeroSection() {
           </p>
           
           {/* Call to Actions */}
-          <div className="flex flex-wrap items-center gap-8">
-            <button className="bg-[#ccff00] text-black px-8 py-3.5 rounded-full font-bold text-sm hover:bg-[#b3e600] transition-colors shadow-[0_0_15px_rgba(204,255,0,0.3)]">
+          <div className="flex flex-wrap items-center md:gap-8 gap-5">
+            <button className="bg-[#ccff00] text-black md:px-8 px-4 md:py-3.5 py-2.5 rounded-full font-bold text-sm hover:bg-[#b3e600] transition-colors shadow-[0_0_15px_rgba(204,255,0,0.3)]">
               Try 14 Days For Free
             </button>
             
@@ -94,7 +94,7 @@ export default function HeroSection() {
           <img 
             src="https://winsfolio.net/html/promix/demos/assets/img/hero2-img.png" 
             alt="Ultra 8 Smart Watch" 
-            className="w-full max-w-[450px] md:max-w-[550px] h-auto object-contain drop-shadow-2xl z-20"
+            className="w-full max-w-[250px] md:max-w-[550px] h-auto object-contain drop-shadow-2xl z-20"
           />
           
           {/* Optional: Glow effect behind the watch */}
