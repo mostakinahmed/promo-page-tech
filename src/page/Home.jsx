@@ -325,7 +325,7 @@ export default function Home() {
                         <motion.div
                             animate={{ y: [0, -10, 0] }}
                             transition={{ duration: 3, repeat: Infinity }}
-                            className="absolute bottom-10 left-8 bg-[#ccff00] text-black md:px-5 px-3 md:py-3 py-2 rounded-full font-bold shadow-2xl z-30"
+                            className="absolute bottom-10 text-sm md:text-lg left-8 bg-[#ccff00] text-black md:px-5 px-3 md:py-3 py-2 rounded-full font-bold shadow-2xl z-30"
                         >
                             Series 8 Ultra
                         </motion.div>
@@ -403,7 +403,7 @@ export default function Home() {
 
                         {/* Button */}
                         <div className="mt-10">
-                            <button className="bg-[#ccff00] hover:bg-white text-black font-bold md:px-8  md:py-4 px-5  py-2.5 rounded-full transition-all duration-300 shadow-[0_10px_40px_rgba(204,255,0,0.4)]">
+                            <button className="bg-[#ccff00] text-sm md:text-md hover:bg-white text-black font-bold md:px-8  md:py-4 px-5  py-2.5 rounded-full transition-all duration-300 shadow-[0_10px_40px_rgba(204,255,0,0.4)]">
                                 Explore More
                             </button>
                         </div>
